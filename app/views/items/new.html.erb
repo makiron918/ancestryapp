@@ -1,0 +1,16 @@
+<%= form_for @item do |f| %>
+  <div class="item-name">
+    <p>商品名</p>
+    <%= f.text_field :name, class: "input", placeholder: "商品名"%>
+  </div>
+
+  <div class="item-category">
+    <p>カテゴリー</p>
+    <div class="category-box">
+      <%= f.fields_for :category, @category do |cat| %>
+        <%= cat.select :name, @category_parent_array, {}, {class: 'item-category', id: 'parent_category'} %>
+      <% end %>
+    </div>
+  </div>
+
+<% end %>
